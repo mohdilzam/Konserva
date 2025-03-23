@@ -1,0 +1,129 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 142 43% 42%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 36 32% 51%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 142 43% 42%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 142 43% 42%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .glassmorphism {
+    @apply bg-white/80 backdrop-blur-md border border-white/10 shadow-lg;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .btn-primary {
+    @apply bg-forest-600 text-white px-6 py-3 rounded-full hover:bg-forest-700 transition-all duration-300 ease-out;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-100 text-gray-800 px-6 py-3 rounded-full hover:bg-gray-200 transition-all duration-300 ease-out;
+  }
+
+  .chip {
+    @apply bg-gray-100 text-gray-700 text-xs font-medium px-3 py-1 rounded-full;
+  }
+}
+
+/* Animations */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.animate-card {
+  transform: scale(1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.animate-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Card Hover Effects */
+.hover-card {
+  transition: all 0.3s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Image Effects */
+.blur-in {
+  filter: blur(10px);
+  transition: filter 0.5s ease;
+}
+
+.blur-in.loaded {
+  filter: blur(0);
+}
+
+/* Button Styles */
+.btn-rounded {
+  @apply rounded-full px-6 py-2.5 font-medium transition-all duration-300;
+}
+
+.btn-primary-rounded {
+  @apply btn-rounded bg-forest-600 text-white hover:bg-forest-700;
+}
+
+.btn-secondary-rounded {
+  @apply btn-rounded bg-gray-100 text-gray-800 hover:bg-gray-200;
+}
