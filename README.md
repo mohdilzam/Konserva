@@ -27,10 +27,6 @@
 
 - **Artikel Edukasi**  
   Konten edukatif tentang pelestarian satwa dan ekosistem Indonesia.
-
-- **Formulir Langganan**  
-  Pengguna dapat berlangganan newsletter untuk mendapatkan informasi terbaru.
-
 ---
 
 ## 🎨 Desain
