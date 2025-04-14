@@ -9,7 +9,7 @@ export const dummyAnimals: Animal[] = [
     latinName: 'Pongo pygmaeus',
     image: '/images/orangutan.jpg',
     status: 'Kritis',
-    habitat: 'Hutan Hujan',
+    habitat: 'Hutan Tropis',
     location: 'Kalimantan',
     description: 'Orangutan Kalimantan adalah salah satu dari tiga spesies orangutan. Habitatnya mencakup dataran rendah dan pegunungan di pulau Borneo. Spesies ini sangat terancam oleh hilangnya habitat akibat deforestasi dan perburuan liar.'
   },
@@ -19,7 +19,7 @@ export const dummyAnimals: Animal[] = [
     latinName: 'Panthera tigris sumatrae',
     image: '/images/harimausumatra.jpg',
     status: 'Kritis',
-    habitat: 'Hutan Hujan',
+    habitat: 'Hutan Tropis',
     location: 'Sumatra',
     description: 'Harimau Sumatera adalah subspesies harimau yang hanya ditemukan di pulau Sumatera, Indonesia. Merupakan salah satu harimau terkecil, dengan ukuran jantan rata-rata sekitar 2.4 meter. Diperkirakan hanya tersisa sekitar 400 individu di alam liar.'
   },
@@ -29,7 +29,7 @@ export const dummyAnimals: Animal[] = [
     latinName: 'Rhinoceros sondaicus',
     image: '/images/badakjawa.jpg',
     status: 'Kritis',
-    habitat: 'Hutan Hujan',
+    habitat: 'Hutan Tropis',
     location: 'Jawa',
     description: 'Badak Jawa adalah salah satu mamalia paling langka di dunia. Spesies ini memiliki satu cula dan kulit yang tampak seperti baju baja. Saat ini populasinya kurang dari 80 individu, yang sebagian besar terdapat di Taman Nasional Ujung Kulon.'
   },
@@ -39,7 +39,7 @@ export const dummyAnimals: Animal[] = [
     latinName: 'Paradisaea apoda',
     image: '/images/cendrawasih.jpg',
     status: 'Terancam',
-    habitat: 'Hutan Hujan',
+    habitat: 'Hutan Tropis',
     location: 'Papua',
     description: 'Burung Cenderawasih adalah kelompok burung dengan bulu-bulu indah yang terdapat di Indonesia Timur. Mereka terkenal karena warna bulunya yang cerah dan ritual kawin yang menakjubkan. Meskipun dilindungi, populasinya terancam oleh perburuan dan hilangnya habitat.'
   },
