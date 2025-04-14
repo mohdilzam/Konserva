@@ -18,7 +18,7 @@ const TentangKami = () => {
                 Platform Konservasi Satwa Langka Indonesia
               </h2>
               <p className="text-lg text-gray-600">
-                Konserva didirikan pada tahun 2008 dengan misi melindungi dan memulihkan populasi satwa langka Indonesia melalui pendekatan terpadu yang menggabungkan penelitian ilmiah, kerja sama masyarakat, dan edukasi publik.
+                Konserva didirikan pada tahun 2010 dengan misi melindungi dan memulihkan populasi satwa langka Indonesia melalui pendekatan terpadu yang menggabungkan penelitian ilmiah, kerja sama masyarakat, dan edukasi publik.
               </p>
             </div>
             

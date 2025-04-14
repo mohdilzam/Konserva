@@ -39,7 +39,7 @@ const Hero = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                 </svg>
               </div>
-              <span className="text-sm text-gray-500">2023</span>
+              <span className="text-sm text-gray-500">2025</span>
             </div>
             <h3 className="text-2xl font-bold mb-3">Gabung Komunitas</h3>
             <p className="text-lg font-medium text-forest-600">Bergabunglah dengan ribuan relawan konservasi</p>
