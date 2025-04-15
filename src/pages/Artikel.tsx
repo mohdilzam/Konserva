@@ -5,7 +5,6 @@ import Footer from '@/components/Footer';
 import { ArrowLeft, ArrowRight, CalendarDays, User, Clock, Eye } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-// Tipe data untuk artikel
 type Article = {
   id: string;
   title: string;
@@ -19,7 +18,6 @@ type Article = {
   views: number;
 };
 
-// Data dummy untuk artikel/berita
 const articles: Article[] = [
   {
     id: '1',
@@ -107,18 +105,15 @@ const Artikel = () => {
   const [email, setEmail] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   
-  // Filter articles by category
   const filteredArticles = activeCategory 
     ? articles.filter(article => article.category === activeCategory)
     : articles;
 
-  // Handle category filter
   const handleCategoryFilter = (category: string) => {
     setActiveCategory(category === activeCategory ? null : category);
     setCurrentPage(1);
   };
 
-  // Handle newsletter subscription
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
     alert(`Terima kasih telah berlangganan newsletter dengan email: ${email}`);

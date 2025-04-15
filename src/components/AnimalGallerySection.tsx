@@ -15,7 +15,6 @@ const AnimalGallerySection: React.FC<AnimalGallerySectionProps> = ({ animals }) 
   const [activeFilters, setActiveFilters] = useState<Record<string, string>>({});
 
   useEffect(() => {
-    // Filter animals based on search and active filters
     let result = animals;
     
     if (searchValue) {
@@ -25,7 +24,6 @@ const AnimalGallerySection: React.FC<AnimalGallerySectionProps> = ({ animals }) 
       );
     }
     
-    // Apply active filters
     Object.entries(activeFilters).forEach(([key, value]) => {
       if (value) {
         result = result.filter(animal => animal[key as keyof Animal] === value);

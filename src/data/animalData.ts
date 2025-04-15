@@ -1,7 +1,6 @@
 
 import { Animal } from '@/components/AnimalCard';
 
-// Dummy data untuk Satwa
 export const dummyAnimals: Animal[] = [
   {
     id: '1',

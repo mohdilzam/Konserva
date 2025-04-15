@@ -18,7 +18,6 @@ const GaleriSatwa = () => {
   }, []);
 
   useEffect(() => {
-    // Filter animals based on search and active filters
     let result = animals;
     
     if (searchValue) {
@@ -28,7 +27,6 @@ const GaleriSatwa = () => {
       );
     }
     
-    // Apply active filters
     Object.entries(activeFilters).forEach(([key, value]) => {
       if (value) {
         result = result.filter(animal => animal[key as keyof Animal] === value);

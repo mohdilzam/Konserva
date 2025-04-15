@@ -6,7 +6,6 @@ import { ArrowLeft, MapPin, AlertTriangle, Info, TrendingUp, TrendingDown, Heart
 import { Link, useParams } from 'react-router-dom';
 import { Animal } from '@/components/AnimalCard';
 
-// Data dummy untuk satwa
 const dummyAnimals: Animal[] = [
   {
     id: '1',
@@ -40,7 +39,6 @@ const dummyAnimals: Animal[] = [
   },
 ];
 
-// Data tambahan detail satwa
 type AnimalDetail = {
   id: string;
   estimatedPopulation: string;
@@ -180,7 +178,6 @@ const trendIcons = {
 const DetailSatwa = () => {
   const { id } = useParams<{ id: string }>();
   
-  // Temukan data satwa berdasarkan ID
   const animal = dummyAnimals.find(animal => animal.id === id);
   const animalDetail = id ? dummyAnimalDetails[id] : undefined;
   

@@ -32,7 +32,6 @@ const AnimalFilter: React.FC<AnimalFilterProps> = ({
     setOpenFilter(null);
   };
 
-  // Handle click outside to close dropdown
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement;

@@ -6,7 +6,6 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   
-  // Function to check if the current path matches the link
   const isActive = (path: string) => {
     return location.pathname === path;
   };
@@ -97,7 +96,7 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Mobile menu button */}
+        {/* Mobile Menu Button */}
         <button 
           onClick={() => setIsOpen(!isOpen)} 
           className="md:hidden p-2 rounded-md text-gray-800"
