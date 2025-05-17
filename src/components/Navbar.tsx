@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link, useLocation } from "react-router-dom";
 
@@ -91,7 +90,7 @@ const Navbar = () => {
         </nav>
 
         <div className="hidden md:flex items-center">
-          <Link to="/galeri" className="bg-forest-600 hover:bg-forest-700 text-white px-6 py-2 rounded-full font-medium transition-colors">
+          <Link to="/login" className="bg-forest-600 hover:bg-forest-700 text-white px-6 py-2 rounded-full font-medium transition-colors">
             Mulai Sekarang
           </Link>
         </div>
@@ -171,7 +170,7 @@ const Navbar = () => {
               Tentang
             </Link>
             
-            <Link to="/galeri" className="bg-forest-600 hover:bg-forest-700 text-white px-6 py-2 rounded-full text-center font-medium">
+            <Link to="/login" className="bg-forest-600 hover:bg-forest-700 text-white px-6 py-2 rounded-full text-center font-medium">
               Mulai Sekarang
             </Link>
           </div>

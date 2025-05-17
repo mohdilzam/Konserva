@@ -11,6 +11,8 @@ import ProgramKonservasi from "./pages/ProgramKonservasi";
 import Artikel from "./pages/Artikel";
 import TentangKami from "./pages/TentangKami";
 import DetailSatwa from "./pages/DetailSatwa";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 const queryClient = new QueryClient();
 
@@ -27,8 +29,9 @@ const App = () => (
           <Route path="/artikel" element={<Artikel />} />
           <Route path="/tentang" element={<TentangKami />} />
           <Route path="/satwa/:id" element={<DetailSatwa />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
