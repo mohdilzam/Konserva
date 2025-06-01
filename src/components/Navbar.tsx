@@ -1,13 +1,36 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from '../context/AuthContext';
+import { Button } from './ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from './ui/dropdown-menu';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, logout } = useAuth();
   
   const isActive = (path: string) => {
     return location.pathname === path;
   };
+
+  const isAuthPage = () => {
+    return ['/login', '/register', '/forgot-password', '/reset-password'].includes(location.pathname);
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
+  if (isAuthPage()) {
+    return null;
+  }
 
   return (
     <header className="w-full py-6 bg-white z-50">
@@ -90,9 +113,37 @@ const Navbar = () => {
         </nav>
 
         <div className="hidden md:flex items-center">
-          <Link to="/login" className="bg-forest-600 hover:bg-forest-700 text-white px-6 py-2 rounded-full font-medium transition-colors">
-            Mulai Sekarang
-          </Link>
+          {user ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline">
+                  {user.name}
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem onClick={() => navigate('/profile')}>
+                  Profile
+                </DropdownMenuItem>
+                {user.role === 'admin' && (
+                  <DropdownMenuItem onClick={() => navigate('/admin')}>
+                    Admin Dashboard
+                  </DropdownMenuItem>
+                )}
+                <DropdownMenuItem onClick={handleLogout}>
+                  Logout
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <div className="flex space-x-2">
+              <Button variant="outline" onClick={() => navigate('/login')}>
+                Login
+              </Button>
+              <Button onClick={() => navigate('/register')}>
+                Register
+              </Button>
+            </div>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
@@ -122,6 +173,7 @@ const Navbar = () => {
                   ? 'text-forest-600 border-l-4 border-forest-600 pl-2' 
                   : 'text-gray-900 hover:text-forest-600'
               }`}
+              onClick={() => setIsOpen(false)}
             >
               Beranda
             </Link>
@@ -133,6 +185,7 @@ const Navbar = () => {
                   ? 'text-forest-600 border-l-4 border-forest-600 pl-2' 
                   : 'text-gray-900 hover:text-forest-600'
               }`}
+              onClick={() => setIsOpen(false)}
             >
               Galeri
             </Link>
@@ -144,6 +197,7 @@ const Navbar = () => {
                   ? 'text-forest-600 border-l-4 border-forest-600 pl-2' 
                   : 'text-gray-900 hover:text-forest-600'
               }`}
+              onClick={() => setIsOpen(false)}
             >
               Konservasi
             </Link>
@@ -155,6 +209,7 @@ const Navbar = () => {
                   ? 'text-forest-600 border-l-4 border-forest-600 pl-2' 
                   : 'text-gray-900 hover:text-forest-600'
               }`}
+              onClick={() => setIsOpen(false)}
             >
               Artikel
             </Link>
@@ -166,13 +221,57 @@ const Navbar = () => {
                   ? 'text-forest-600 border-l-4 border-forest-600 pl-2' 
                   : 'text-gray-900 hover:text-forest-600'
               }`}
+              onClick={() => setIsOpen(false)}
             >
               Tentang
             </Link>
             
-            <Link to="/login" className="bg-forest-600 hover:bg-forest-700 text-white px-6 py-2 rounded-full text-center font-medium">
-              Mulai Sekarang
+            {user ? (
+              <>
+                <Link 
+                  to="/profile" 
+                  className="font-medium text-gray-900 hover:text-forest-600 py-2"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Profile
+                </Link>
+                {user.role === 'admin' && (
+                  <Link 
+                    to="/admin" 
+                    className="font-medium text-gray-900 hover:text-forest-600 py-2"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Admin Dashboard
+                  </Link>
+                )}
+                <button
+                  onClick={() => {
+                    handleLogout();
+                    setIsOpen(false);
+                  }}
+                  className="font-medium text-gray-900 hover:text-forest-600 py-2 text-left w-full"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <Link 
+                  to="/login" 
+                  className="font-medium text-gray-900 hover:text-forest-600 py-2"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Login
+                </Link>
+                <Link 
+                  to="/register" 
+                  className="font-medium text-gray-900 hover:text-forest-600 py-2"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Register
             </Link>
+              </>
+            )}
           </div>
         </div>
       )}

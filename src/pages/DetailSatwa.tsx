@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -279,20 +278,24 @@ const DetailSatwa = () => {
               </div>
               
               <div className="flex flex-wrap gap-3">
-                <button 
+                <a 
+                  href="https://membership.wwf.id/id/berbagiruang/aceh"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-forest-600 hover:bg-forest-700 text-white px-6 py-3 rounded-full flex items-center transition-colors"
-                  onClick={handleDonateClick}
                 >
                   <HeartHandshake className="mr-2 h-5 w-5" />
                   Dukung Konservasi
-                </button>
-                <button 
+                </a>
+                <a 
+                  href="https://membership.wwf.id/id/berbagiruang/aceh"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-3 rounded-full flex items-center transition-colors"
-                  onClick={handleAdoptClick}
                 >
                   <Leaf className="mr-2 h-5 w-5" />
                   Program Adopsi Virtual
-                </button>
+                </a>
               </div>
             </div>
           </div>

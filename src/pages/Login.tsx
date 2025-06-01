@@ -1,11 +1,163 @@
-import React from 'react';
-import LoginForm from '../components/LoginForm';
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { Button } from '../components/ui/button';
+import { Input } from '../components/ui/input';
+import { Eye, EyeOff, ArrowLeft } from 'lucide-react';
+import { toast } from '../components/ui/use-toast';
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { login, updateUser } = useAuth();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      console.log('Attempting login with:', { email }); // Debug log
+
+      const response = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+      console.log('Login response:', data); // Debug log
+
+      if (response.ok && data.token && data.user) {
+        // Store the token
+        login(data.token);
+        
+        // Update user data
+        updateUser(data.user);
+        
+        // Show success message
+        toast({
+          title: "Login berhasil",
+          description: `Selamat datang kembali, ${data.user.name}!`,
+        });
+
+        // Redirect based on role
+        if (data.user.role === 'admin') {
+          navigate('/admin');
+        } else {
+          navigate('/');
+        }
+      } else {
+        // Show error message from server or default message
+        toast({
+          variant: "destructive",
+          title: "Login gagal",
+          description: data.message || JSON.stringify(data) || "Email atau password salah",
+        });
+        console.error('Login failed:', data);
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: error instanceof Error ? error.message : JSON.stringify(error),
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-      <div className="w-full max-w-md px-4">
-        <LoginForm />
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      <div className="p-4">
+        <Link 
+          to="/" 
+          className="inline-flex items-center text-sm font-medium text-gray-600 hover:text-gray-900"
+        >
+          <ArrowLeft className="w-4 h-4 mr-2" />
+          Kembali ke Beranda
+        </Link>
+      </div>
+      
+      <div className="flex-1 flex items-center justify-center">
+        <div className="w-full max-w-md px-8 py-12 bg-white rounded-lg shadow-md">
+          <h2 className="text-2xl font-bold text-center text-gray-900 mb-8">Login ke Konserva</h2>
+          
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                Email
+              </label>
+              <Input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full"
+                placeholder="Masukkan email Anda"
+                autoComplete="email"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+                Password
+              </label>
+              <div className="relative">
+                <Input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  className="w-full pr-10"
+                  placeholder="Masukkan password Anda"
+                  autoComplete="current-password"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                >
+                  {showPassword ? (
+                    <EyeOff className="h-4 w-4" />
+                  ) : (
+                    <Eye className="h-4 w-4" />
+                  )}
+                </button>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <Link
+                to="/forgot-password"
+                className="text-sm text-forest-600 hover:text-forest-500"
+              >
+                Lupa password?
+              </Link>
+              <Link
+                to="/register"
+                className="text-sm text-forest-600 hover:text-forest-500"
+              >
+                Belum punya akun?
+              </Link>
+            </div>
+
+            <Button
+              type="submit"
+              className="w-full bg-forest-600 hover:bg-forest-700"
+              disabled={isLoading}
+            >
+              {isLoading ? "Loading..." : "Login"}
+            </Button>
+          </form>
+        </div>
       </div>
     </div>
   );

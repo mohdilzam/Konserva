@@ -1,14 +1,9 @@
-
 import React from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import { Target, Award, Heart } from 'lucide-react';
 
 const TentangKami = () => {
   return (
     <div className="min-h-screen bg-white">
-      <Navbar />
-      
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-6 md:px-12">
           
@@ -81,8 +76,6 @@ const TentangKami = () => {
           </div>
         </div>
       </section>
-      
-      <Footer />
     </div>
   );
 };

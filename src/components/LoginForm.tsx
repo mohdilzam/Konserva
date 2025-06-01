@@ -53,30 +53,39 @@ const LoginForm = () => {
           email: values.email,
           password: values.password,
         }),
-        credentials: 'include',
       });
 
-      const data = await response.json();
-
-      if (response.ok) {
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('user', JSON.stringify(data.user));
-
-        toast({
-          title: "Login Berhasil",
-          description: "Selamat datang kembali!",
-        });
-
-        navigate('/');
-      } else {
-        throw new Error(data.message || 'Login gagal');
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Login gagal');
       }
+
+      const data = await response.json();
+      localStorage.setItem('token', data.token);
+
+      toast({
+        title: "Login Berhasil",
+        description: "Selamat datang kembali!",
+      });
+
+      navigate('/');
     } catch (error) {
       console.error('Login error:', error);
+      
+      // More specific error handling
+      let errorMessage = 'Terjadi kesalahan saat login';
+      if (error instanceof Error) {
+        if (error.message.includes('Failed to fetch')) {
+          errorMessage = 'Tidak dapat terhubung ke server. Pastikan server berjalan dan dapat diakses.';
+        } else {
+          errorMessage = error.message;
+        }
+      }
+      
       toast({
         variant: "destructive",
         title: "Login Gagal",
-        description: error instanceof Error ? error.message : "Email atau password salah",
+        description: errorMessage,
       });
     } finally {
       setIsLoading(false);

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Mail, Phone, MapPin, Instagram, Twitter, Facebook, Youtube } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -16,16 +15,36 @@ const Footer = () => {
               Platform konservasi satwa langka Indonesia dengan misi melindungi keanekaragaman hayati dan ekosistem untuk generasi mendatang.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="bg-gray-200 hover:bg-gray-300 p-2 rounded-full transition-colors">
+              <a 
+                href="https://www.instagram.com/wwf/#" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="bg-gray-200 hover:bg-gray-300 p-2 rounded-full transition-colors"
+              >
                 <Instagram size={20} className="text-gray-700" />
               </a>
-              <a href="#" className="bg-gray-200 hover:bg-gray-300 p-2 rounded-full transition-colors">
+              <a 
+                href="https://x.com/wwf" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="bg-gray-200 hover:bg-gray-300 p-2 rounded-full transition-colors"
+              >
                 <Twitter size={20} className="text-gray-700" />
               </a>
-              <a href="#" className="bg-gray-200 hover:bg-gray-300 p-2 rounded-full transition-colors">
+              <a 
+                href="https://www.facebook.com/WWF" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="bg-gray-200 hover:bg-gray-300 p-2 rounded-full transition-colors"
+              >
                 <Facebook size={20} className="text-gray-700" />
               </a>
-              <a href="#" className="bg-gray-200 hover:bg-gray-300 p-2 rounded-full transition-colors">
+              <a 
+                href="https://www.youtube.com/@WWF" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="bg-gray-200 hover:bg-gray-300 p-2 rounded-full transition-colors"
+              >
                 <Youtube size={20} className="text-gray-700" />
               </a>
             </div>
